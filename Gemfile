@@ -32,6 +32,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   # Testing framework to Ruby on Rails
   gem 'rspec-rails'
+  # Code coverage analysis tool
+  gem 'simplecov', require: false
 end
 
 group :development do

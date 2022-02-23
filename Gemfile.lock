@@ -76,6 +76,7 @@ GEM
       reline (>= 0.2.7)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    docile (1.4.0)
     erubi (1.10.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -166,6 +167,12 @@ GEM
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
     rspec-support (3.11.0)
+    simplecov (0.21.2)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11)
+      simplecov_json_formatter (~> 0.1)
+    simplecov-html (0.12.3)
+    simplecov_json_formatter (0.1.4)
     strscan (3.0.1)
     thor (1.2.1)
     timeout (0.2.0)
@@ -186,6 +193,7 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.2)
   rspec-rails
+  simplecov
   tzinfo-data
 
 RUBY VERSION

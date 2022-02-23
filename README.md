@@ -36,8 +36,8 @@
 
 ## About the project
 
--> This API is online (thanks to heroku)
--> I use (discover) newrelic and bugsnag
+- This API is online (thanks to heroku)
+- I use newrelic and bugsnag
 
 
 ### Built With
