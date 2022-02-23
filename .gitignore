@@ -31,5 +31,5 @@
 # Code coverage
 /coverage/
 
-# temp
-/.circleci/
+# Env variables
+.env

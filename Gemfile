@@ -34,6 +34,8 @@ group :development, :test do
   gem 'rspec-rails'
   # Code coverage analysis tool
   gem 'simplecov', require: false
+  #
+  gem "codeclimate-test-reporter"
 end
 
 group :development do
