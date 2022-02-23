@@ -9,3 +9,5 @@ plugins:
       score_threshold: 20.0
   fixme:
     enabled: true
+  bundler-audit:
+    enabled: true
