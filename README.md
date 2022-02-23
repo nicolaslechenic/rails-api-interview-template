@@ -3,7 +3,7 @@
 <br/>
 
 <div align="center">
-  <a href="https://codeclimate.com/github/nicolaslechenic/job-interview-example/maintainability"><img src="https://api.codeclimate.com/v1/badges/d9f73cf476f53b4009ef/maintainability" /></a>
+  <a href="https://codeclimate.com/github/nicolaslechenic/rails-api-interview-template/maintainability"><img src="https://api.codeclimate.com/v1/badges/5315dc0642eaf162b890/maintainability" /></a>
 </div>
 
 <!-- TABLE OF CONTENTS -->
