@@ -7,6 +7,12 @@ jobs:
           PGHOST: localhost
           PGUSER: your-app-name
           RAILS_ENV: test
+      - image: cimg/postgres:14.0
+        auth:
+          username: mydockerhub-user
+          password: mydockerhub-password
+        environment:
+          POSTGRES_USER: postgres
     steps:
       - checkout
       # Restore Cached Dependencies
