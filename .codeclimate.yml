@@ -11,3 +11,5 @@ plugins:
     enabled: true
   bundler-audit:
     enabled: true
+  brakeman:
+    enabled: true
