@@ -4,10 +4,12 @@ jobs:
     docker:
       - image: cimg/ruby:3.1.0
       - image: cimg/postgres:14.1
+        name: db
         environment:
           CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
           DATABASE_USER: railsuser
           DATABASE_PASSWORD: railspassword
+          DATABASE_HOST: db
     steps:
       - checkout
       - run:
@@ -22,8 +24,8 @@ jobs:
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-      - run: bundle exec rake db:create
-      - run: bundle exec rake db:migrate
+      - run: bundle exec rails db:create
+      - run: bundle exec rails db:migrate
       - run:
           name: run RSpec
           command: |
