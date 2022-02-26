@@ -26,8 +26,8 @@ jobs:
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-      - run: bundle exec rails db:create
-      - run: bundle exec rails db:migrate
+      - run: bin/rails db:create
+      - run: bin/rails db:migrate
       - run:
           name: run RSpec
           command: |
