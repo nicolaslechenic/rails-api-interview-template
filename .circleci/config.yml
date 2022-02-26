@@ -2,9 +2,12 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/ruby:3.1.0-node
+      - image: cimg/ruby:3.1.0
+      - image: circleci/postgres:9.4
         environment:
           CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
+          POSTGRES_USER: railsuser
+          POSTGRES_PASSWORD: railspassword
     steps:
       - checkout
       - run:
@@ -19,6 +22,8 @@ jobs:
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
+      - run: bundle exec rake db:create
+      - run: bundle exec rake db:migrate
       - run:
           name: run RSpec
           command: |
