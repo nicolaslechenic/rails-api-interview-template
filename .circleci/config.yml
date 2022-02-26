@@ -12,7 +12,6 @@ jobs:
           environment:
             BUNDLE_PATH: vendor/bundle
           command: |
-          
             bundle install --jobs=4 --retry=3 --path vendor/bundle && bundle clean
       - run:
           name:  Download cc-test-reporter
