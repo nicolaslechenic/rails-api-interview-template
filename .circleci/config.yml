@@ -4,12 +4,14 @@ jobs:
     docker:
       - image: cimg/ruby:3.1.0
       - image: cimg/postgres:14.1
-        name: db
         environment:
+          RAILS_ENV: test
+          PGHOST: 127.0.0.1
+          PGUSER: root
           CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
           DATABASE_USER: railsuser
           DATABASE_PASSWORD: railspassword
-          DATABASE_HOST: db
+          DATABASE_HOST: localhost
     steps:
       - checkout
       - run:
