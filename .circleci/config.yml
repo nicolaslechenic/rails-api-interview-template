@@ -5,16 +5,26 @@ jobs:
       - image: cimg/ruby:3.1.0-node
     steps:
       - checkout
-      - run: ruby --version
       - run:
           name: install dependencies
           environment:
             BUNDLE_PATH: vendor/bundle
           command: |
             bundle install --jobs=4 --retry=3 --path vendor/bundle && bundle clean
-      - run: bundle exec rails --version
+      - run:
+          name:  Download cc-test-reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+            chmod +x ./tmp/cc-test-reporter
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - cc-test-reporter
       - run:
           name: run RSpec
           command: bundle exec rspec
+
       - store_artifacts:
-          path: coverage
+          path: coverage/.resultset.json
+          prefix: coverage
