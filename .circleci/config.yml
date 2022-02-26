@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:3.1.0
-      - image: circleci/postgres:9.4
+      - image: cimg/postgres:14.1
         environment:
           CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
           POSTGRES_USER: railsuser
