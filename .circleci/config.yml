@@ -1,33 +1,8 @@
-version: 2
+version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/ruby:3.1.0
-        environment:
-          PGHOST: localhost
-          PGUSER: your-app-name
-          RAILS_ENV: test
-      - image: cimg/postgres:14.0
-        auth:
-          username: mydockerhub-user
-          password: mydockerhub-password
-        environment:
-          POSTGRES_USER: postgres
+      - image: cimg/ruby:3.1.0-node
     steps:
       - checkout
-      # Restore Cached Dependencies
-      - type: cache-restore
-        name: Restore bundle cache
-        key: your-app-name-{{ checksum "Gemfile.lock" }}
-      # Bundle install dependencies
-      - run: bundle install --path vendor/bundle
-      # Cache Dependencies
-      - type: cache-save
-        name: Store bundle cache
-        key: your-app-name-{{ checksum "Gemfile.lock" }}
-        paths:
-          - vendor/bundle
-      # Setup the database
-      - run: bundle exec rake db:setup
-      # Run the tests
-      - run: bundle exec rake
+      - run: ruby --version
