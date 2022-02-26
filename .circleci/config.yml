@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:3.1.0-node
+        environment:
+          CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
     steps:
       - checkout
       - run:
@@ -16,18 +18,13 @@ jobs:
           name:  Download cc-test-reporter
           command: |
             mkdir -p tmp/
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
-            chmod +x ./tmp/cc-test-reporter
-      - persist_to_workspace:
-          root: tmp
-          paths:
-            - cc-test-reporter
-      - run: 
-          name: Run backend tests
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: run RSpec
           command: |
-            bundle exec rake
-            ./tmp/cc-test-reporter format-coverage -t simplecov -o tmp/codeclimate.backend.json coverage/backend/.resultset.json
-      - persist_to_workspace:
-          root: tmp
-          paths: 
-            - codeclimate.backend.json
+            ./cc-test-reporter before-build
+            mkdir test_results
+            bundle exec rspec --format documentation --format RspecJunitFormatter --out test_results/rspec/rspec.xml
+            ./cc-test-reporter after-build --coverage-input-type simplecov  --exit-code $?
+
