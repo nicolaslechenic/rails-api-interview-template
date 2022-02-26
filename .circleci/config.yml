@@ -6,5 +6,13 @@ jobs:
     steps:
       - checkout
       - run: ruby --version
-      - run: bundle install
+      - run:
+          name: install dependencies
+          environment:
+            BUNDLE_PATH: vendor/bundle
+          command: |
+            bundle install --jobs=4 --retry=3 --path vendor/bundle && bundle clean
       - run: rails --version
+      - run:
+          name: run RSpec
+          command: bundle exec rspec
