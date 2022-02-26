@@ -22,16 +22,6 @@ jobs:
           root: tmp
           paths:
             - cc-test-reporter
-  api-tests:
-    steps:
-      - checkout
-      - attach_workspace:
-          at: ~/repo/tmp
-      - run: 
-          name: Setup dependencies
-          command: |
-            bundle install --without production --path=${BUNDLE_PATH:-vendor/bundle}
-            bundle exec rake db:create db:migrate
       - run: 
           name: Run backend tests
           command: |
@@ -41,14 +31,3 @@ jobs:
           root: tmp
           paths: 
             - codeclimate.backend.json
-  upload-coverage:
-    environment: 
-      - CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
-    steps:
-      - attach_workspace:
-          at: ~/repo/tmp
-      - run:
-          name: Upload coverage results to Code Climate
-          command: |
-            ./tmp/cc-test-reporter sum-coverage tmp/codeclimate.*.json -p 2 -o tmp/codeclimate.total.json
-            ./tmp/cc-test-reporter upload-coverage -i tmp/codeclimate.total.json
