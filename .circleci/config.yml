@@ -11,23 +11,28 @@ jobs:
           CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
           DATABASE_USER: railsuser
           DATABASE_PASSWORD: railspassword
-          DATABASE_HOST: localhost
+          POSTGRES_HOST: localhost
+          POSTGRES_DB: test_db
+          POSTGRES_USER: circleci
+          POSTGRES_PASSWORD: circleci
     steps:
       - checkout
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client-14
       - run:
           name: install dependencies
           environment:
             BUNDLE_PATH: vendor/bundle
           command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle && bundle clean
+            bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3 && bundle clean
       - run:
           name:  Download cc-test-reporter
           command: |
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-      - run: bin/rails db:create
-      - run: bin/rails db:migrate
+      - run: bundle exec rails db:create db:schema:load --trace
+      - run: bundle exec rails db:migrate
       - run:
           name: run RSpec
           command: |
