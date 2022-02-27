@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - run: sudo apt-get update
+      - run: echo 'export PATH=/usr/lib/postgresql/13.4/bin/:$PATH' >> $BASH_ENV
       - run:
           name: install dependencies
           environment:
