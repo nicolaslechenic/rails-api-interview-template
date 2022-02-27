@@ -16,6 +16,7 @@ jobs:
       - checkout
       - run: sudo apt-get update
       - run: echo 'export PATH=/usr/lib/postgresql/13.4/bin/:$PATH' >> $BASH_ENV
+      - run: which psql
       - run:
           name: install dependencies
           environment:
@@ -36,3 +37,7 @@ jobs:
             bundle exec rspec --format documentation --format RspecJunitFormatter --out test_results/rspec/rspec.xml
             ./cc-test-reporter after-build --coverage-input-type simplecov  --exit-code $?
 
+workflows:
+  main:
+    jobs:
+      - build
