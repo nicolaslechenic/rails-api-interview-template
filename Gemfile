@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec_junit_formatter'
   # Code coverage analysis tool
   gem 'simplecov', require: false
+  gem 'simplecov_json_formatter', require: false
   # Test reporter for codeclimate
   gem "codeclimate-test-reporter"
   # Shim to load environment variables from .env file

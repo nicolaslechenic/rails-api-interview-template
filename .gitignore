@@ -33,3 +33,4 @@
 
 # Env variables
 .env
+codeclimate.json

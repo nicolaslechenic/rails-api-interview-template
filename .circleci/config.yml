@@ -28,6 +28,7 @@ jobs:
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
+            ./cc-test-reporter before-build
       - run: bundle exec rails db:create
       - run: bundle exec rails db:migrate      
       - run:
@@ -38,7 +39,7 @@ jobs:
       - run:
           name: run cc-test-reporter
           command: |
-            ./cc-test-reporter format-coverage -t simplecov -o codeclimate.json coverage/.resultset.json
+            ./cc-test-reporter format-coverage -t simplecov -o codeclimate.json coverage/coverage.json
 
 workflows:
   main:

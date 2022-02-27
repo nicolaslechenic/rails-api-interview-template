@@ -1,6 +1,9 @@
 require 'simplecov'
 SimpleCov.start
 
+require "simplecov_json_formatter"
+SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+
 require 'rails/all'
 require 'rspec/rails'
 
