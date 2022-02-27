@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:3.1.0
-      - image: cimg/postgres:14.1
+      - image: postgres:14.1
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
