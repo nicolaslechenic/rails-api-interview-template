@@ -6,13 +6,11 @@ jobs:
       - image: circleci/postgres
         environment:
           RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: circleci
           CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
-          POSTGRES_HOST: localhost
-          POSTGRES_DB: circle_test
-          POSTGRES_USER: circleci
-          POSTGRES_PASSWORD: circleci
+          POSTGRESQL_HOST: localhost
+          POSTGRESQL_DATABASE: circle_test
+          POSTGRESQL_USER: circleci
+          POSTGRESQL_PASSWORD: circleci
           
     steps:
       - checkout
