@@ -39,7 +39,7 @@ jobs:
           name: run cc-test-reporter
           command: |
             ./cc-test-reporter format-coverage -t simplecov -o codeclimate.json coverage/coverage.json
-            ./cc-test-reporter upload-coverage -i codeclimate.json
+            ./cc-test-reporter upload-coverage -i codeclimate.json -r 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
 
 workflows:
   main:
