@@ -17,7 +17,7 @@ jobs:
       - run: sudo apt-get update
       - run: echo 'export PATH=/usr/lib/postgresql/13.4/bin/:$PATH' >> $BASH_ENV
       - run: which psql
-      - run: ls var/run/
+      - run: ls /var/run/
       - run:
           name: install dependencies
           environment:
