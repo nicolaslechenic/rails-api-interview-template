@@ -30,5 +30,11 @@ jobs:
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-
+      - run:
+          name: run RSpec
+          command: |
+            ./cc-test-reporter before-build
+            mkdir test_results
+            bundle exec rspec --format documentation --format RspecJunitFormatter --out test_results/rspec/rspec.xml
+            ./cc-test-reporter after-build --coverage-input-type simplecov  --exit-code $?
 
