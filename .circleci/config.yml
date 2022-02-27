@@ -21,7 +21,7 @@ jobs:
           command: |
             bundle check --path=vendor/bundle || bundle install --path=vendor/bundle --jobs 4 --retry 3 && bundle clean
       - run:
-          name:  Download cc-test-reporter
+          name:  download cc-test-reporter
           command: |
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
