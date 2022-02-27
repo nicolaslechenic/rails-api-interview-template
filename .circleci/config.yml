@@ -35,11 +35,11 @@ jobs:
           name: run RSpec
           command: |
             bundle exec rspec 
-      - run: cat coverage/.resultset.json
       - run:
           name: run cc-test-reporter
           command: |
             ./cc-test-reporter format-coverage -t simplecov -o codeclimate.json coverage/coverage.json
+            ./cc-test-reporter upload-coverage -i codeclimate.json
 
 workflows:
   main:
