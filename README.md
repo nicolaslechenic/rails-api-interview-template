@@ -4,6 +4,7 @@
 
 <div align="center">
   <a href="https://codeclimate.com/github/nicolaslechenic/rails-api-interview-template/maintainability"><img src="https://api.codeclimate.com/v1/badges/5315dc0642eaf162b890/maintainability" /></a>
+  <a href="https://codeclimate.com/github/nicolaslechenic/rails-api-interview-template/test_coverage"><img src="https://api.codeclimate.com/v1/badges/5315dc0642eaf162b890/test_coverage" /></a>
   <a href="https://circleci.com/gh/nicolaslechenic/rails-api-interview-template/tree/develop"><img src="https://circleci.com/gh/nicolaslechenic/rails-api-interview-template/tree/develop.svg?style=svg" /></a>
 </div>
 
