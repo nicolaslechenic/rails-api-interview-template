@@ -3,16 +3,17 @@ jobs:
   build:
     docker:
       - image: cimg/ruby:3.1.0
-      - image: postgres:14.1
+      - image: circleci/postgres
         environment:
           RAILS_ENV: test
           PGHOST: localhost
           PGUSER: circleci
           CC_TEST_REPORTER_ID: 6e79dd9d7ed2346892fa600d2f911f603e18b825d4d33b9d0de5eea1be3f5e5d
           POSTGRES_HOST: localhost
-          POSTGRES_DB: test_db
+          POSTGRES_DB: circle_test
           POSTGRES_USER: circleci
           POSTGRES_PASSWORD: circleci
+          
     steps:
       - checkout
       - run: sudo apt-get update
@@ -29,13 +30,5 @@ jobs:
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
-      - run: bundle exec rails db:create db:schema:load --trace
-      - run: bundle exec rails db:migrate
-      - run:
-          name: run RSpec
-          command: |
-            ./cc-test-reporter before-build
-            mkdir test_results
-            bundle exec rspec --format documentation --format RspecJunitFormatter --out test_results/rspec/rspec.xml
-            ./cc-test-reporter after-build --coverage-input-type simplecov  --exit-code $?
+
 
