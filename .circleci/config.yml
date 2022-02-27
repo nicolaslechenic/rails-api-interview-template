@@ -36,9 +36,10 @@ jobs:
             bundle exec rspec 
             ./cc-test-reporter format-coverage -t simplecov -o codeclimate.json coverage/.resultset.json
       - persist_to_workspace:
-          paths: 
-            - codeclimate.json
+          root: ./
+          paths: codeclimate.json
       - run: cat codeclimate.json
+      
 workflows:
   main:
     jobs:
