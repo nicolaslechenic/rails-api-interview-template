@@ -68,6 +68,8 @@ GEM
       tzinfo (~> 2.0)
     bootsnap (1.10.3)
       msgpack (~> 1.2)
+    bugsnag (6.24.2)
+      concurrent-ruby (~> 1.0)
     builder (3.2.4)
     codeclimate-test-reporter (1.0.7)
       simplecov
@@ -196,6 +198,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap
+  bugsnag (~> 6.24)
   codeclimate-test-reporter
   debug
   dotenv-rails
