@@ -16,9 +16,6 @@ jobs:
       - run: mv .env.ci .env
       - run: sudo apt-get update
       - run: echo 'export PATH=/usr/lib/postgresql/12/bin/:$PATH' >> $BASH_ENV
-      - run: ls /var/run/
-      - run: ls -la /usr/lib/postgresql/
-      - run: netstat -an | grep 5432
       - run:
           name: install dependencies
           environment:
@@ -31,6 +28,8 @@ jobs:
             mkdir -p tmp/
             curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
             chmod +x ./cc-test-reporter
+      - run: bundle exec db:create
+      - run: bundle exec db:migrate      
       - run:
           name: run RSpec
           command: |
