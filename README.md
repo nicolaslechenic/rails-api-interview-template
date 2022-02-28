@@ -100,9 +100,13 @@ rspec spec
 
 ## Guidelines
 
+```sh
+cp .scripts/pre-push .git/hooks/pre-push
+```
 
 ### Rubocop
 
 ### Git flow
 
 Git flow is a Git branching model...
+

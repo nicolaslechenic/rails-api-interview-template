@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+echo "Running rubocop"
+bundle exec rubocop
+
+echo "Running brakeman"
+bundle exec brakeman
+
+echo "Running rspec"
+bundle exec rspec
