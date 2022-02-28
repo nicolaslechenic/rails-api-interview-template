@@ -1,6 +1,6 @@
 class Api::GreetingsController < ApplicationController
   def index
-    Bugsnag.notify("Test error")
-    render json: { message: "Hello world"}
+    Bugsnag.notify("Test db")
+    render json: { message: Greeting.first.message }
   end
 end
